@@ -1,0 +1,300 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{
+					"slug": "black",
+					"color": "#000000",
+					"name": "Black"
+				},
+				{
+					"slug": "white",
+					"color": "#ffffff",
+					"name": "White"
+				},
+				{
+					"slug": "yellow",
+					"color": "#FEF100",
+					"name": "Yellow"
+				},
+				{
+					"slug": "dark-text",
+					"color": "#262626",
+					"name": "Dark Text"
+				},
+				{
+					"slug": "dark-bg",
+					"color": "#151515",
+					"name": "Dark Background"
+				},
+				{
+					"slug": "border-dark",
+					"color": "#373737",
+					"name": "Border Dark"
+				},
+				{
+					"slug": "muted",
+					"color": "#767676",
+					"name": "Muted"
+				},
+				{
+					"slug": "button-dark",
+					"color": "#2F2E2E",
+					"name": "Button Dark"
+				},
+				{
+					"slug": "green",
+					"color": "#2AB473",
+					"name": "Green"
+				},
+				{
+					"slug": "lime",
+					"color": "#8CC63F",
+					"name": "Lime"
+				},
+				{
+					"slug": "orange",
+					"color": "#FBAF42",
+					"name": "Orange"
+				},
+				{
+					"slug": "bright-yellow",
+					"color": "#FDF202",
+					"name": "Bright Yellow"
+				},
+				{
+					"slug": "red-orange",
+					"color": "#F06522",
+					"name": "Red Orange"
+				},
+				{
+					"slug": "cyan",
+					"color": "#44C6EF",
+					"name": "Cyan"
+				},
+				{
+					"slug": "tan",
+					"color": "#C2B398",
+					"name": "Tan"
+				}
+			],
+			"gradients": [
+				{
+					"slug": "brand-gradient",
+					"gradient": "linear-gradient(132deg, #2AB473 0%, #8BC53F 9%, #F8B042 33%, #FDF202 52%, #F06522 71%, #44C6EF 100%)",
+					"name": "Brand Gradient"
+				},
+				{
+					"slug": "brand-gradient-text",
+					"gradient": "linear-gradient(to right, #2AB473 0%, #8BC53F 48%, #FEF100 83%)",
+					"name": "Brand Gradient Text"
+				}
+			]
+		},
+		"typography": {
+			"defaultFontSizes": false,
+			"fontFamilies": [
+				{
+					"fontFamily": "'Overpass', sans-serif",
+					"slug": "overpass",
+					"name": "Overpass",
+					"fontFace": [
+						{
+							"fontFamily": "Overpass",
+							"fontWeight": "300",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./fonts/overpass-v16-latin-300.woff2" ]
+						},
+						{
+							"fontFamily": "Overpass",
+							"fontWeight": "400",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./fonts/overpass-v16-latin-regular.woff2" ]
+						},
+						{
+							"fontFamily": "Overpass",
+							"fontWeight": "500",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./fonts/overpass-v16-latin-500.woff2" ]
+						},
+						{
+							"fontFamily": "Overpass",
+							"fontWeight": "600",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./fonts/overpass-v16-latin-600.woff2" ]
+						},
+						{
+							"fontFamily": "Overpass",
+							"fontWeight": "700",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./fonts/overpass-v16-latin-700.woff2" ]
+						}
+					]
+				}
+			],
+			"fontSizes": [
+				{
+					"slug": "small",
+					"size": "16px",
+					"name": "Small"
+				},
+				{
+					"slug": "medium",
+					"size": "18px",
+					"name": "Medium"
+				},
+				{
+					"slug": "large",
+					"size": "20px",
+					"name": "Large"
+				},
+				{
+					"slug": "x-large",
+					"size": "25px",
+					"name": "Extra Large"
+				},
+				{
+					"slug": "heading-4",
+					"size": "28px",
+					"name": "Heading 4"
+				},
+				{
+					"slug": "heading-3",
+					"size": "32px",
+					"name": "Heading 3"
+				},
+				{
+					"slug": "heading-2",
+					"size": "clamp(28px, 2.344vw, 45px)",
+					"name": "Heading 2"
+				},
+				{
+					"slug": "heading-1",
+					"size": "2.813rem",
+					"name": "Heading 1"
+				}
+			]
+		},
+		"spacing": {
+			"units": [ "px", "rem", "vw", "%" ],
+			"spacingSizes": [
+				{
+					"slug": "10",
+					"size": "10px",
+					"name": "XS"
+				},
+				{
+					"slug": "20",
+					"size": "20px",
+					"name": "Small"
+				},
+				{
+					"slug": "30",
+					"size": "30px",
+					"name": "Medium"
+				},
+				{
+					"slug": "40",
+					"size": "40px",
+					"name": "Large"
+				},
+				{
+					"slug": "50",
+					"size": "50px",
+					"name": "XL"
+				},
+				{
+					"slug": "80",
+					"size": "80px",
+					"name": "2XL"
+				},
+				{
+					"slug": "100",
+					"size": "100px",
+					"name": "3XL"
+				},
+				{
+					"slug": "150",
+					"size": "150px",
+					"name": "4XL"
+				}
+			]
+		},
+		"layout": {
+			"contentSize": "1200px",
+			"wideSize": "1440px"
+		},
+		"custom": {
+			"container": {
+				"maxWidth": "1480px",
+				"padding": "20px"
+			},
+			"gradient": {
+				"brand": "linear-gradient(132deg, #2AB473 0%, #8BC53F 9%, #F8B042 33%, #FDF202 52%, #F06522 71%, #44C6EF 100%)",
+				"brandText": "linear-gradient(to right, #2AB473 0%, #8BC53F 48%, #FEF100 83%)"
+			}
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#ffffff",
+			"text": "#000000"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--overpass)",
+			"fontSize": "18px",
+			"fontWeight": "400",
+			"lineHeight": "1.5"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--overpass)",
+					"fontWeight": "600"
+				},
+				"color": {
+					"text": "#000000"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--heading-1)",
+					"lineHeight": "1.1"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--heading-2)",
+					"lineHeight": "1.1"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--heading-3)"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "#000000"
+				}
+			}
+		}
+	},
+	"customTemplates": [
+		{
+			"name": "page-services",
+			"title": "Services",
+			"postTypes": ["page"]
+		}
+	]
+}

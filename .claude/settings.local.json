@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp:*)",
+      "Read(//c/Users/Sean/Local Sites/pb-take-2/app/public/**)",
+      "Bash(wp eval:*)",
+      "Bash(cd:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

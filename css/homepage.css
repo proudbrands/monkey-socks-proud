@@ -1,0 +1,462 @@
+/* ═══════════════════════════════════════════════════════
+   HOMEPAGE — css/homepage.css
+   Sections for the redesigned conversion homepage.
+   Reuses sv-hero, sv-pillar, cs-card from services.css
+   and case-studies.css.
+   ═══════════════════════════════════════════════════════ */
+
+
+/* ─── Quiz trigger inside hero ─── */
+.sv-hero--home .pb-quiz__trigger {
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.sv-hero--home .pb-quiz__trigger--default {
+  background: #fff;
+  color: #0A0A0A;
+  border-color: #fff;
+}
+.sv-hero--home .pb-quiz__trigger--default:hover {
+  background: #2AB473;
+  color: #fff;
+  border-color: #2AB473;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(42,180,115,0.35);
+}
+
+
+/* ─── Hero scroll link ─── */
+.hp-hero__scroll-link {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.hp-hero__scroll-link:hover {
+  color: rgba(255,255,255,0.8);
+  text-decoration: underline;
+}
+
+
+/* ─── Stats bar dark lock on homepage ─── */
+.hp-stats {
+  /* Ensures stats section stays dark even with page-level overrides */
+}
+
+
+/* ─── OSOF Methodology Section ─── */
+.hp-osof {
+  padding: 100px 0;
+  background: #151515;
+}
+.hp-osof__header {
+  margin-bottom: 60px;
+}
+.hp-osof__label {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #2AB473;
+  margin-bottom: 12px;
+}
+.hp-osof__title {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.hp-osof__title strong {
+  background: linear-gradient(to right, #2AB473 0%, #8BC53F 48%, #FEF100 83%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hp-osof__intro {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 700px;
+}
+.hp-osof__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+.hp-osof__step {
+  padding: 40px 36px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid #373737;
+  border-radius: 16px;
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.hp-osof__step:hover {
+  border-color: #2AB473;
+  transform: translateY(-2px);
+}
+.hp-osof__number {
+  display: block;
+  font-size: 48px;
+  font-weight: 300;
+  color: #2AB473;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.hp-osof__step:nth-child(2) .hp-osof__number { color: #8CC63F; }
+.hp-osof__step:nth-child(3) .hp-osof__number { color: #FBAF42; }
+.hp-osof__step:nth-child(4) .hp-osof__number { color: #F06522; }
+
+.hp-osof__step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.hp-osof__step-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+.hp-osof__cta {
+  margin-top: 0;
+}
+
+
+/* ─── Homepage Case Studies Section ─── */
+.hp-case-studies {
+  padding: 100px 0;
+  background: #0A0A0A;
+}
+.hp-case-studies__label {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #2AB473;
+  margin-bottom: 12px;
+}
+.hp-case-studies__heading {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 50px;
+}
+.hp-case-studies__cta {
+  margin-top: 50px;
+}
+
+
+/* ─── Mid-Page Quiz CTA ─── */
+/* ─── Quiz CTA + Testimonial (Lime Accent, 2-col) ─── */
+.hp-quiz-testi {
+  background: rgba(68,198,239,0.08);
+  padding: 100px 0;
+  border-top: 1px solid rgba(68,198,239,0.15);
+  border-bottom: 1px solid rgba(68,198,239,0.15);
+}
+.hp-quiz-testi__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left: CTA */
+.hp-quiz-testi__cta {
+  max-width: 520px;
+}
+.hp-quiz-testi__heading {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 700;
+  color: var(--pb-text-primary);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hp-quiz-testi__subtext {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--pb-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+.hp-quiz-testi__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Right: Testimonial card */
+.hp-quiz-testi__quote-card {
+  background: var(--pb-bg-elevated);
+  border: 1px solid var(--pb-border);
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+}
+.hp-quiz-testi__marks {
+  font-size: 80px;
+  line-height: 0.6;
+  background: linear-gradient(132deg, #2AB473 0%, #8BC53F 40%, #FEF100 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.hp-quiz-testi__quote p {
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--pb-text-primary);
+  font-style: italic;
+  margin-bottom: 24px;
+}
+.hp-quiz-testi__author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hp-quiz-testi__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(68,198,239,0.3);
+}
+.hp-quiz-testi__name {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pb-text-primary);
+}
+.hp-quiz-testi__role {
+  font-size: 13px;
+  color: var(--pb-text-muted);
+}
+
+
+/* ─── Process — "How We Work" ─── */
+.hp-process {
+  padding: 100px 0;
+  background: #151515;
+}
+.hp-process__header {
+  margin-bottom: 60px;
+}
+.hp-process__title {
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hp-process__subtitle {
+  font-size: 17px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 600px;
+}
+.hp-process__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.hp-process__step {
+  padding-top: 30px;
+  position: relative;
+}
+.hp-process__step::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(132deg, #2AB473 0%, #8BC53F 9%, #F8B042 33%, #FDF202 52%, #F06522 71%, #44C6EF 100%);
+}
+.hp-process__number {
+  display: block;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+.hp-process__step:nth-child(1) .hp-process__number { color: #2AB473; }
+.hp-process__step:nth-child(2) .hp-process__number { color: #FBAF42; }
+.hp-process__step:nth-child(3) .hp-process__number { color: #44C6EF; }
+
+.hp-process__step-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.hp-process__step-text {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ─── FAQ Accordion ─── */
+.hp-faq {
+  padding: 100px 0;
+  background: #0A0A0A;
+}
+.hp-faq__title {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 50px;
+}
+.hp-faq__accordion .accordion-item {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #373737;
+  border-radius: 0;
+}
+.hp-faq__accordion .accordion-button {
+  font-size: 20px;
+  font-weight: 600;
+  background: transparent;
+  color: #fff;
+  padding: 24px 0;
+  box-shadow: none;
+}
+.hp-faq__accordion .accordion-button:not(.collapsed) {
+  color: #2AB473;
+  background: transparent;
+  box-shadow: none;
+}
+.hp-faq__accordion .accordion-button::after {
+  filter: invert(1);
+}
+.hp-faq__accordion .accordion-button:not(.collapsed)::after {
+  filter: invert(1);
+}
+.hp-faq__accordion .accordion-body {
+  padding: 0 0 24px 0;
+}
+.hp-faq__accordion .accordion-body p {
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  margin: 0;
+}
+.hp-faq__accordion .accordion-body a {
+  color: #2AB473;
+  text-decoration: underline;
+}
+.hp-faq__accordion .accordion-body a:hover {
+  color: #8CC63F;
+}
+
+
+/* ─── Featured Articles ─── */
+.hp-articles {
+  padding: 100px 0;
+  background: #0A0A0A;
+}
+.hp-articles__heading {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 991px) {
+  .hp-osof {
+    padding: 80px 0;
+  }
+  .hp-osof__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .hp-quiz-testi {
+    padding: 80px 0;
+  }
+  .hp-quiz-testi__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hp-case-studies {
+    padding: 80px 0;
+  }
+  .hp-process {
+    padding: 80px 0;
+  }
+  .hp-process__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .hp-faq {
+    padding: 80px 0;
+  }
+  .hp-articles {
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .hp-osof {
+    padding: 60px 0;
+  }
+  .hp-osof__step {
+    padding: 30px 24px;
+  }
+  .hp-quiz-testi {
+    padding: 60px 0;
+  }
+  .hp-quiz-testi__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hp-quiz-testi__actions .pb-footer-cta__btn {
+    text-align: center;
+  }
+  .hp-quiz-testi__quote-card {
+    padding: 28px;
+  }
+  .hp-quiz-testi__marks {
+    font-size: 60px;
+  }
+  .hp-case-studies {
+    padding: 60px 0;
+  }
+  .hp-process {
+    padding: 60px 0;
+  }
+  .hp-faq {
+    padding: 60px 0;
+  }
+  .hp-faq__accordion .accordion-button {
+    font-size: 17px;
+    padding: 20px 0;
+  }
+  .hp-articles {
+    padding: 60px 0;
+  }
+}

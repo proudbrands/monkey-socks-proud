@@ -1,0 +1,394 @@
+/* ═══════════════════════════════════════════════════════════
+   COMPONENTS PAGE — Style Guide Layout
+   Theme-aware: responds to [data-theme] on <html>
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Page Layout ── */
+.cpg {
+  padding: 60px 0 120px;
+  background: var(--pb-bg-surface);
+}
+.cpg__header {
+  text-align: center;
+  padding: 100px 0 60px;
+  background: var(--pb-bg-primary);
+  border-bottom: 1px solid var(--pb-border);
+}
+.cpg__title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--pb-text-primary);
+  margin-bottom: 12px;
+}
+.cpg__subtitle {
+  font-size: 18px;
+  color: var(--pb-text-muted);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Sticky Sidebar Nav ── */
+.cpg__layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 40px;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+.cpg__nav {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  padding: 20px 0;
+}
+.cpg__nav-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--pb-text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.cpg__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+.cpg__nav-list li {
+  margin-bottom: 4px;
+}
+.cpg__nav-list a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: var(--pb-text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.cpg__nav-list a:hover {
+  color: var(--pb-text-primary);
+  background: rgba(128,128,128,0.1);
+}
+.cpg__nav-group {
+  margin-bottom: 28px;
+}
+
+/* ── Theme Toggle in Sidebar ── */
+.cpg__toggle-wrap {
+  padding: 16px 12px;
+  margin-bottom: 24px;
+  border: 1px solid var(--pb-border);
+  border-radius: 10px;
+  background: var(--pb-bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cpg__toggle-wrap .pb-theme-toggle {
+  position: relative;
+  flex-shrink: 0;
+}
+.cpg__toggle-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pb-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+.cpg__toggle-hint {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--pb-text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 2px;
+}
+
+/* ── Component Sections ── */
+.cpg__section {
+  margin-bottom: 80px;
+  scroll-margin-top: 100px;
+}
+.cpg__section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--pb-text-primary);
+  margin-bottom: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--pb-border);
+}
+.cpg__section-desc {
+  font-size: 14px;
+  color: var(--pb-text-muted);
+  margin-bottom: 32px;
+}
+
+/* ── Component Item ── */
+.cpg__component {
+  margin-bottom: 48px;
+}
+.cpg__component-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pb-text-secondary);
+  margin-bottom: 6px;
+}
+.cpg__component-meta {
+  font-size: 12px;
+  color: var(--pb-text-muted);
+  font-family: monospace;
+  margin-bottom: 16px;
+}
+.cpg__component-meta code {
+  background: rgba(128,128,128,0.12);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #2AB473;
+}
+.cpg__component-status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-left: 8px;
+}
+.cpg__component-status--ok {
+  background: rgba(42,180,115,0.15);
+  color: #2AB473;
+}
+.cpg__component-status--partial {
+  background: rgba(248,176,66,0.15);
+  color: #F8B042;
+}
+.cpg__component-status--missing {
+  background: rgba(240,101,34,0.15);
+  color: #F06522;
+}
+.cpg__component-status--dark-only {
+  background: rgba(68,198,239,0.15);
+  color: #44C6EF;
+}
+
+/* ── Live Preview Container ── */
+.cpg__preview {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--pb-border);
+  position: relative;
+}
+.cpg__preview-inner {
+  padding: 40px 30px;
+  background: var(--pb-bg-primary);
+}
+.cpg__preview--surface .cpg__preview-inner {
+  background: var(--pb-bg-surface);
+}
+.cpg__preview--secondary .cpg__preview-inner {
+  background: var(--pb-bg-secondary);
+}
+/* Always-dark preview — ignores theme toggle */
+.cpg__preview--always-dark .cpg__preview-inner {
+  background: #0A0A0A;
+}
+.cpg__preview--always-dark h1,
+.cpg__preview--always-dark h2,
+.cpg__preview--always-dark h3,
+.cpg__preview--always-dark h4,
+.cpg__preview--always-dark h5,
+.cpg__preview--always-dark h6,
+.cpg__preview--always-dark p,
+.cpg__preview--always-dark span,
+.cpg__preview--always-dark a,
+.cpg__preview--always-dark li {
+  color: inherit;
+}
+/* Light-demo preview — forced light background, ignores theme toggle */
+.cpg__preview--light-demo .cpg__preview-inner {
+  background: #ffffff;
+}
+.cpg__preview--light-demo h1,
+.cpg__preview--light-demo h2,
+.cpg__preview--light-demo h3,
+.cpg__preview--light-demo h4,
+.cpg__preview--light-demo h5,
+.cpg__preview--light-demo h6,
+.cpg__preview--light-demo p,
+.cpg__preview--light-demo span,
+.cpg__preview--light-demo a,
+.cpg__preview--light-demo li {
+  color: inherit;
+}
+/* Variant label (Dark/Light comparison labels) */
+.cpg__variant-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--pb-text-muted);
+  margin-bottom: 8px;
+}
+/* Light version status badge */
+.cpg__component-status--light {
+  background: rgba(42,180,115,0.15);
+  color: #2AB473;
+}
+
+/* ── Swatch grid for color tokens ── */
+.cpg__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+.cpg__swatch {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--pb-border);
+}
+.cpg__swatch-color {
+  height: 60px;
+}
+.cpg__swatch-info {
+  padding: 8px 10px;
+  font-size: 11px;
+  background: var(--pb-bg-secondary);
+  color: var(--pb-text-secondary);
+}
+.cpg__swatch-name {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+.cpg__swatch-value {
+  font-family: monospace;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ── Preview resets for nested components ── */
+.cpg__preview-inner .believing_sect,
+.cpg__preview-inner .build_sec,
+.cpg__preview-inner .help_busines_sec,
+.cpg__preview-inner .sv-pillars,
+.cpg__preview-inner .faq_sec,
+.cpg__preview-inner .testi_sec,
+.cpg__preview-inner .blog_dtl_top_sec,
+.cpg__preview-inner .skill_sec,
+.cpg__preview-inner .books_sec {
+  padding: 0;
+}
+.cpg__preview-inner .container {
+  padding: 0;
+  max-width: 100%;
+}
+
+/* ── Gradient text for typing-effect inside component previews ── */
+.cpg__preview .typing-effect {
+  background: linear-gradient(to right, #2AB473 0%, #8BC53F 48%, #44C6EF 83%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+/* Kill the ::before overlay that covers gradient text */
+.cpg__preview .typing-effect::before {
+  display: none !important;
+}
+
+/* ── About Hero centering ── */
+.cpg__preview .about_top_sec {
+  text-align: center !important;
+}
+.cpg__preview .about_des p {
+  float: none !important;
+  margin: 0 auto !important;
+}
+.cpg__preview .about_title {
+  padding-bottom: 30px !important;
+}
+
+/* ── Case Study Hero centering ── */
+.cpg__preview .cs-hero__title,
+.cpg__preview .cs-hero__descriptor {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* ── Homepage Pillar card fixes — prevent <a> default blue ── */
+.cpg__preview a.sv-pillar {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+.cpg__preview a.sv-pillar h2,
+.cpg__preview a.sv-pillar p,
+.cpg__preview a.sv-pillar span {
+  color: inherit;
+}
+
+/* ── Footer CTA centering ── */
+.cpg__preview .pb-footer-cta {
+  text-align: center;
+}
+.cpg__preview .pb-footer-cta__inner {
+  text-align: center;
+}
+
+/* ── Footer preview padding ── */
+.cpg__preview .footer {
+  padding: 40px 30px !important;
+}
+.cpg__preview .footer_top {
+  padding: 0 !important;
+}
+
+/* ── Override help_businesBox width for grid layouts ── */
+.cpg__preview .help_businesBox {
+  width: 100% !important;
+}
+
+/* ── Fix client logo grid inside component previews ── */
+.cpg__preview .our_client_sect {
+  padding: 60px 30px !important;
+}
+.cpg__preview .our_client_sect p {
+  margin-bottom: 40px !important;
+}
+.cpg__preview .our_client_sect ul {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 20px !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  list-style: none !important;
+  padding: 0 !important;
+}
+.cpg__preview .our_client_sect ul li {
+  width: 100% !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .cpg__layout {
+    grid-template-columns: 1fr;
+  }
+  .cpg__nav {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-height: none;
+    border-bottom: 1px solid var(--pb-border);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+  .cpg__nav-group { margin-bottom: 0; }
+  .cpg__nav-list { display: flex; flex-wrap: wrap; gap: 4px; }
+}

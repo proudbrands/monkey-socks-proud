@@ -1,0 +1,108 @@
+/**
+ * Editor styles — visual parity between Gutenberg editor and frontend.
+ * Loaded via add_editor_style() in functions.php.
+ */
+
+/* ── Reset editor defaults to match frontend ── */
+.editor-styles-wrapper {
+	font-family: 'Overpass', sans-serif;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 1.5;
+	color: #000;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+	font-family: 'Overpass', sans-serif;
+	font-weight: 600;
+	color: #000;
+	padding: 0;
+	margin: 0;
+}
+
+.editor-styles-wrapper h1 {
+	font-size: 2.813rem;
+	line-height: 1.1;
+}
+
+.editor-styles-wrapper h2 {
+	font-size: clamp(28px, 2.344vw, 45px);
+	line-height: 1.1;
+}
+
+.editor-styles-wrapper h3 {
+	font-size: 32px;
+}
+
+.editor-styles-wrapper p {
+	font-family: 'Overpass', sans-serif;
+	font-size: 18px;
+	line-height: 1.5;
+	font-weight: 400;
+	color: #000;
+}
+
+.editor-styles-wrapper a {
+	color: #000;
+}
+
+/* ── Button styles matching frontend ── */
+.editor-styles-wrapper .primary_btn,
+.editor-styles-wrapper .wp-block-button__link {
+	min-width: 170px;
+	padding: 2px 20px;
+	height: 50px;
+	border-radius: 25px;
+	font-family: 'Overpass', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	background: #000;
+	color: #fff;
+	border: solid 1px #000;
+	text-decoration: none;
+}
+
+/* ── ACF Block previews ── */
+.editor-styles-wrapper .acf-block-preview {
+	font-family: 'Overpass', sans-serif;
+}
+
+/* ── Container width in editor ── */
+.editor-styles-wrapper .wp-block {
+	max-width: 1480px;
+}
+
+.editor-styles-wrapper .wp-block[data-align="wide"] {
+	max-width: 1440px;
+}
+
+.editor-styles-wrapper .wp-block[data-align="full"] {
+	max-width: none;
+}
+
+/* ── Brand gradient text utility ── */
+.editor-styles-wrapper .gradient-text {
+	background: linear-gradient(to right, #2AB473 0%, #8BC53F 48%, #FEF100 83%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* ── Dark section preview ── */
+.editor-styles-wrapper [data-pb-dark="true"] {
+	background: #000;
+	color: #fff;
+}
+
+.editor-styles-wrapper [data-pb-dark="true"] h1,
+.editor-styles-wrapper [data-pb-dark="true"] h2,
+.editor-styles-wrapper [data-pb-dark="true"] h3,
+.editor-styles-wrapper [data-pb-dark="true"] p {
+	color: #fff;
+}

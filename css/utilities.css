@@ -1,0 +1,140 @@
+/**
+ * Utility CSS — replaces Bootstrap utility classes used in templates.
+ * Loaded on block-template pages instead of Bootstrap.
+ */
+
+/* ── Display ── */
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-grid { display: grid !important; }
+
+/* ── Flexbox ── */
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+.flex-column { flex-direction: column !important; }
+.flex-row { flex-direction: row !important; }
+.align-items-center { align-items: center !important; }
+.align-items-start { align-items: flex-start !important; }
+.align-items-end { align-items: flex-end !important; }
+.justify-content-center { justify-content: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.justify-content-start { justify-content: flex-start !important; }
+.justify-content-end { justify-content: flex-end !important; }
+.align-self-start { align-self: flex-start !important; }
+.align-self-center { align-self: center !important; }
+
+/* ── Width / Height ── */
+.w-100 { width: 100% !important; }
+.w-50 { width: 50% !important; }
+.w-auto { width: auto !important; }
+.h-100 { height: 100% !important; }
+
+/* ── Float ── */
+.float-start { float: left !important; }
+.float-end { float: right !important; }
+.float-none { float: none !important; }
+.clearfix::after { content: ""; display: table; clear: both; }
+
+/* ── Position ── */
+.position-relative { position: relative !important; }
+.position-absolute { position: absolute !important; }
+.position-fixed { position: fixed !important; }
+.position-sticky { position: sticky !important; }
+.top-0 { top: 0 !important; }
+.start-0 { left: 0 !important; }
+.end-0 { right: 0 !important; }
+.bottom-0 { bottom: 0 !important; }
+
+/* ── Text ── */
+.text-center { text-align: center !important; }
+.text-start { text-align: left !important; }
+.text-end { text-align: right !important; }
+.text-uppercase { text-transform: uppercase !important; }
+.text-decoration-none { text-decoration: none !important; }
+.fw-300 { font-weight: 300 !important; }
+.fw-400 { font-weight: 400 !important; }
+.fw-500 { font-weight: 500 !important; }
+.fw-600 { font-weight: 600 !important; }
+.fw-700, .fw-bold { font-weight: 700 !important; }
+
+/* ── Overflow ── */
+.overflow-hidden { overflow: hidden !important; }
+.overflow-x-hidden { overflow-x: hidden !important; }
+
+/* ── Spacing reset ── */
+.m-0 { margin: 0 !important; }
+.p-0 { padding: 0 !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+/* ── Visibility ── */
+.invisible { visibility: hidden !important; }
+.visible { visibility: visible !important; }
+
+/* ── Responsive: lg breakpoint (992px) ── */
+@media (min-width: 992px) {
+	.d-lg-none { display: none !important; }
+	.d-lg-block { display: block !important; }
+	.d-lg-flex { display: flex !important; }
+	.d-lg-inline-block { display: inline-block !important; }
+	.d-lg-grid { display: grid !important; }
+}
+
+@media (max-width: 991.98px) {
+	.d-lg-none { /* already visible by default */ }
+}
+
+/* ── Responsive: md breakpoint (768px) ── */
+@media (min-width: 768px) {
+	.d-md-none { display: none !important; }
+	.d-md-block { display: block !important; }
+	.d-md-flex { display: flex !important; }
+}
+
+/* ── Responsive: sm breakpoint (576px) ── */
+@media (min-width: 576px) {
+	.d-sm-none { display: none !important; }
+	.d-sm-block { display: block !important; }
+}
+
+/* ── Container (matches existing .container) ── */
+.container {
+	max-width: 1480px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* ── Screen-reader only ── */
+.sr-only,
+.screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* ── Gap utilities ── */
+.gap-0 { gap: 0 !important; }
+.gap-1 { gap: 5px !important; }
+.gap-2 { gap: 10px !important; }
+.gap-3 { gap: 20px !important; }
+.gap-4 { gap: 30px !important; }
+.gap-5 { gap: 50px !important; }
+
+/* ── Border ── */
+.rounded { border-radius: 15px !important; }
+.rounded-pill { border-radius: 9999px !important; }
+.rounded-0 { border-radius: 0 !important; }
+
+/* ── Object fit ── */
+.object-cover { object-fit: cover; }
+.object-contain { object-fit: contain; }

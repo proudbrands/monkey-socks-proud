@@ -1,0 +1,8 @@
+[26-Jun-2025 05:13:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/zgh3aiq/public_html/zgh3sslyrq-staging.onrocket.site/wp-content/themes/proud-brand/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/zgh3aiq/public_html/zgh3sslyrq-staging.onrocket.site/wp-content/themes/proud-brand/index.php on line 15
+[10-Jul-2025 03:42:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/zgh3aiq/public_html/zgh3sslyrq-staging.onrocket.site/wp-content/themes/proud-brand/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/zgh3aiq/public_html/zgh3sslyrq-staging.onrocket.site/wp-content/themes/proud-brand/index.php on line 15
