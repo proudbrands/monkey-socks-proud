@@ -171,6 +171,12 @@ function proud_brand_scripts() {
 	if ( is_page_template( 'template-components.php' ) ) {
 		wp_enqueue_style( 'proud-brand-components-page', get_template_directory_uri() . '/css/components-page.css', array(), _S_VERSION );
 	}
+
+	// Homepage v2 animated sections
+	if ( is_page_template( 'template-home.php' ) ) {
+		wp_enqueue_style( 'proud-brand-hp-v2-css', get_template_directory_uri() . '/css/hp-sections-v2.css', array(), _S_VERSION );
+		wp_enqueue_script( 'proud-brand-hp-v2-js', get_template_directory_uri() . '/js/hp-sections-v2.js', array(), _S_VERSION, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'proud_brand_scripts' );
 
@@ -206,10 +212,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 
 
-/**
- * Homepage ACF fields (extends group_hp_v2).
- */
-require_once get_template_directory() . '/setup-homepage-complete.php';
 
 // this is theme setting
 

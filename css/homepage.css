@@ -164,10 +164,10 @@
 /* ─── Mid-Page Quiz CTA ─── */
 /* ─── Quiz CTA + Testimonial (Lime Accent, 2-col) ─── */
 .hp-quiz-testi {
-  background: rgba(68,198,239,0.08);
+  background: #44C6EF;
   padding: 100px 0;
-  border-top: 1px solid rgba(68,198,239,0.15);
-  border-bottom: 1px solid rgba(68,198,239,0.15);
+  border-top: 1px solid rgba(68,198,239,0.3);
+  border-bottom: 1px solid rgba(68,198,239,0.3);
 }
 .hp-quiz-testi__grid {
   display: grid;

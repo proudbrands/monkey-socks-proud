@@ -1,4 +1,8 @@
 
+/* ─── Global link colour — override Bootstrap blue ─── */
+a { color: inherit; }
+a:hover { color: #2AB473; }
+
 .marquee_sec { background: var(--black); overflow: hidden; white-space: nowrap; padding: 55px 0; }
 .marquee_sec h2 { font-weight: 400; font-size: 20px; color:#767676; text-transform: uppercase; margin-bottom: 40px; letter-spacing:2.4px; }
 
@@ -1207,7 +1211,7 @@ background-clip: text;
 .digital_box .help_businesBox { border:1px solid #7E7E7E; border-radius:20px; }
 
 
-.how_build_sec { padding: 100px 0 0; position: relative; }
+.how_build_sec { padding: 100px 0 80px; position: relative; }
 .how_build_sec .build_div span { color:#767676; }
 .how_build_sec .build_div h2,
 .how_build_sec .build_div ul li h3,

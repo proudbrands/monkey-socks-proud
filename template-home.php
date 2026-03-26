@@ -12,12 +12,15 @@ get_header();
 <?php
 /* ===============================================================
    SECTION 1 — HERO
-   ACF fields: hp_hero_bg_image, hp_hero_label, hp_hero_heading,
+   ACF fields: hp_hero_bg_image, hp_hero_bg_video (file),
+   hp_hero_bg_video_url (Vimeo), hp_hero_label, hp_hero_heading,
    hp_hero_heading_highlight, hp_hero_subheading, hp_hero_quiz_label,
    hp_hero_secondary_text, hp_hero_secondary_url
    =============================================================== */
 
 $hero_img       = get_field( 'hp_hero_bg_image' );
+$hero_video     = get_field( 'hp_hero_bg_video' );      // Local file (WebM / MP4)
+$hero_vimeo     = get_field( 'hp_hero_bg_video_url' );   // Vimeo URL
 $hero_label     = get_field( 'hp_hero_label' ) ?: 'BRANDING / WEB DESIGN / ORGANIC SEARCH / AI AUTOMATION';
 $hero_heading   = get_field( 'hp_hero_heading' ) ?: 'Your brand deserves to be';
 $hero_highlight = get_field( 'hp_hero_heading_highlight' ) ?: 'Found. Understood. Chosen.';
@@ -25,10 +28,24 @@ $hero_sub       = get_field( 'hp_hero_subheading' ) ?: 'We&rsquo;re ProudBrands,
 $hero_cta_text  = get_field( 'hp_hero_quiz_label' ) ?: 'Discover Your Brand in 3 Minutes';
 $hero_sec_text  = get_field( 'hp_hero_secondary_text' ) ?: 'Book a Free Call';
 $hero_sec_url   = get_field( 'hp_hero_secondary_url' );
+
+// Extract Vimeo ID from URL.
+$vimeo_id = '';
+if ( $hero_vimeo && preg_match( '/vimeo\.com\/(?:video\/)?(\d+)/', $hero_vimeo, $m ) ) {
+	$vimeo_id = $m[1];
+}
 ?>
 
 <section class="sv-hero sv-hero--home">
-	<?php if ( $hero_img ) : ?>
+	<?php if ( $hero_video ) : ?>
+	<video class="sv-hero__bg-video" autoplay muted loop playsinline preload="auto"<?php echo $hero_img ? ' poster="' . esc_url( $hero_img['url'] ) . '"' : ''; ?>>
+		<source src="<?php echo esc_url( $hero_video['url'] ); ?>" type="<?php echo esc_attr( $hero_video['mime_type'] ); ?>">
+	</video>
+	<?php elseif ( $vimeo_id ) : ?>
+	<div class="sv-hero__bg-vimeo">
+		<iframe src="https://player.vimeo.com/video/<?php echo esc_attr( $vimeo_id ); ?>?background=1&autoplay=1&loop=1&muted=1&dnt=1" frameborder="0" allow="autoplay" loading="lazy"></iframe>
+	</div>
+	<?php elseif ( $hero_img ) : ?>
 	<div class="sv-hero__bg-image" style="background-image: url('<?php echo esc_url( $hero_img['url'] ); ?>')"></div>
 	<?php endif; ?>
 	<div class="sv-hero__overlay"></div>
@@ -110,9 +127,9 @@ $logos_heading = get_field( 'hp_logos_heading' ) ?: 'PROUD TO WORK WITH';
 				// Fallback if no ACF data yet
 			?>
 			<div class="sv-stats__item" data-aos="fade-up"><p class="sv-stats__number">200+</p><p class="sv-stats__label">Projects Delivered</p></div>
-			<div class="sv-stats__item" data-aos="fade-up" data-aos-delay="150"><p class="sv-stats__number">&pound;12M+</p><p class="sv-stats__label">Revenue Generated for Clients</p></div>
+			<div class="sv-stats__item" data-aos="fade-up" data-aos-delay="150"><p class="sv-stats__number">&pound;5M+</p><p class="sv-stats__label">Revenue Generated for Clients</p></div>
 			<div class="sv-stats__item" data-aos="fade-up" data-aos-delay="300"><p class="sv-stats__number">97%</p><p class="sv-stats__label">Client Retention Rate</p></div>
-			<div class="sv-stats__item" data-aos="fade-up" data-aos-delay="450"><p class="sv-stats__number">10+</p><p class="sv-stats__label">Years in Business</p></div>
+			<div class="sv-stats__item" data-aos="fade-up" data-aos-delay="450"><p class="sv-stats__number">12+</p><p class="sv-stats__label">Years in Business</p></div>
 			<?php endif; ?>
 		</div>
 	</div>
@@ -121,13 +138,177 @@ $logos_heading = get_field( 'hp_logos_heading' ) ?: 'PROUD TO WORK WITH';
 
 <?php
 /* ===============================================================
-   SECTION 4 — SERVICE PILLARS
+   SECTION 4 — WHAT WE DO (v2 — animated)
    ACF fields: hp_pillars_label, hp_pillars_heading,
    hp_pillars (repeater: modifier, icon_svg, name, description, cta_text, link)
    =============================================================== */
 
 $pillars_label   = get_field( 'hp_pillars_label' ) ?: 'WHAT WE DO';
 $pillars_heading = get_field( 'hp_pillars_heading' ) ?: 'What does your brand need right now?';
+$pillars_sub     = 'Four pillars. One goal: sustainable, measurable growth for your business.';
+
+// SVG icons keyed by modifier (stroke-drawn on scroll)
+$pillar_icons_v2 = array(
+	'ai'     => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1a1 1 0 0 0 1 1h1a4 4 0 0 1 0 8h-1a1 1 0 0 0-1 1v1a4 4 0 0 1-8 0v-1a1 1 0 0 0-1-1H6a4 4 0 0 1 0-8h1a1 1 0 0 0 1-1V6a4 4 0 0 1 4-4z"/><circle cx="12" cy="12" r="2"/></svg>',
+	'search' => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>',
+	'web'    => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>',
+	'brand'  => '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>',
+);
+?>
+<section class="hp-wwd hp-v2">
+	<canvas class="hp-v2__canvas hp-wwd__canvas"></canvas>
+	<div class="container">
+		<div class="hp-wwd__header">
+			<p class="hp-wwd__label"><?php echo esc_html( $pillars_label ); ?></p>
+			<h2 class="hp-wwd__title"><?php echo esc_html( $pillars_heading ); ?></h2>
+			<p class="hp-wwd__subtitle"><?php echo esc_html( $pillars_sub ); ?></p>
+		</div>
+
+		<div class="hp-wwd__grid">
+			<?php
+			if ( have_rows( 'hp_pillars' ) ) :
+				while ( have_rows( 'hp_pillars' ) ) : the_row();
+					$mod      = get_sub_field( 'modifier' ) ?: 'ai';
+					$icon_svg = get_sub_field( 'icon_svg' );
+					$icon     = $icon_svg ?: ( $pillar_icons_v2[ $mod ] ?? '' );
+					$name     = get_sub_field( 'name' );
+					$desc     = get_sub_field( 'description' );
+					$cta      = get_sub_field( 'cta_text' ) ?: 'Learn More';
+					$link     = get_sub_field( 'link' );
+			?>
+			<a href="<?php echo esc_url( $link ); ?>" class="hp-wwd__card hp-wwd__card--<?php echo esc_attr( $mod ); ?>">
+				<div class="hp-wwd__accent"></div>
+				<div class="hp-wwd__icon"><?php echo $icon; ?></div>
+				<h3 class="hp-wwd__name"><?php echo esc_html( $name ); ?></h3>
+				<p class="hp-wwd__desc"><?php echo esc_html( $desc ); ?></p>
+				<span class="hp-wwd__link">
+					<?php echo esc_html( $cta ); ?>
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</span>
+			</a>
+			<?php
+				endwhile;
+			else :
+				// Fallback pillars
+				$fallback_pillars = array(
+					array( 'ai', 'AI Automation', 'Automate repetitive tasks, streamline workflows, and unlock new capabilities with custom AI solutions built for your business.', 'Explore AI Solutions', '/services/ai-automation/' ),
+					array( 'search', 'Organic Search (OSOF)', 'Get found everywhere your customers search. Google, AI assistants, answer engines, and generative search, all covered.', 'Discover OSOF', '/osof/' ),
+					array( 'web', 'Web Design & Development', 'Conversion-focused websites that look stunning and perform. Built on WordPress with your growth in mind.', 'See Our Web Work', '/services/web-design/' ),
+					array( 'brand', 'Brand Identity', 'Logos, visual systems, and brand strategy that make your business impossible to ignore and easy to remember.', 'View Branding Work', '/services/branding/' ),
+				);
+				foreach ( $fallback_pillars as $fp ) :
+					$icon = $pillar_icons_v2[ $fp[0] ] ?? '';
+			?>
+			<a href="<?php echo esc_url( home_url( $fp[4] ) ); ?>" class="hp-wwd__card hp-wwd__card--<?php echo esc_attr( $fp[0] ); ?>">
+				<div class="hp-wwd__accent"></div>
+				<div class="hp-wwd__icon"><?php echo $icon; ?></div>
+				<h3 class="hp-wwd__name"><?php echo esc_html( $fp[1] ); ?></h3>
+				<p class="hp-wwd__desc"><?php echo esc_html( $fp[2] ); ?></p>
+				<span class="hp-wwd__link">
+					<?php echo esc_html( $fp[3] ); ?>
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+				</span>
+			</a>
+			<?php endforeach; endif; ?>
+		</div>
+	</div>
+</section>
+
+
+<?php
+/* ===============================================================
+   SECTION 5 — OSOF METHODOLOGY (v2 — animated timeline)
+   ACF fields: hp_osof_label, hp_osof_title, hp_osof_intro,
+   hp_osof_steps (repeater: title, text), hp_osof_cta_text, hp_osof_cta_url
+   =============================================================== */
+
+$osof_label    = get_field( 'hp_osof_label' ) ?: 'OUR METHODOLOGY';
+$osof_title    = get_field( 'hp_osof_title' ) ?: 'Found <strong>everywhere</strong> your customers look.';
+$osof_intro    = get_field( 'hp_osof_intro' ) ?: 'OSOF, our Organic Search Optimisation Framework, works across four pillars to make sure you don&rsquo;t just rank on Google. You appear wherever your ideal customer is searching.';
+$osof_cta_text = get_field( 'hp_osof_cta_text' ) ?: 'Learn More About OSOF';
+$osof_cta_url  = get_field( 'hp_osof_cta_url' ) ?: home_url( '/osof/' );
+?>
+<section class="hp-osof-v2 hp-v2">
+	<canvas class="hp-v2__canvas hp-osof-v2__canvas"></canvas>
+	<div class="container">
+		<div class="hp-osof-v2__header">
+			<p class="hp-osof-v2__label"><?php echo esc_html( $osof_label ); ?></p>
+			<h2 class="hp-osof-v2__title"><?php echo wp_kses_post( $osof_title ); ?></h2>
+			<p class="hp-osof-v2__intro"><?php echo wp_kses_post( $osof_intro ); ?></p>
+		</div>
+
+		<div class="hp-osof-v2__timeline">
+			<div class="hp-osof-v2__progress"></div>
+			<?php
+			if ( have_rows( 'hp_osof_steps' ) ) :
+				$osof_i = 1;
+				while ( have_rows( 'hp_osof_steps' ) ) : the_row();
+			?>
+			<div class="hp-osof-v2__step">
+				<div class="hp-osof-v2__node">
+					<div class="hp-osof-v2__dot">
+						<div class="hp-osof-v2__pulse"></div>
+					</div>
+				</div>
+				<div class="hp-osof-v2__card">
+					<div class="hp-osof-v2__number">
+						<span class="hp-osof-v2__digit"><span class="hp-osof-v2__digit-inner">0</span></span><span class="hp-osof-v2__digit"><span class="hp-osof-v2__digit-inner"><?php echo esc_html( $osof_i ); ?></span></span>
+					</div>
+					<h3 class="hp-osof-v2__step-title"><?php echo esc_html( get_sub_field( 'title' ) ); ?></h3>
+					<p class="hp-osof-v2__step-text"><?php echo esc_html( get_sub_field( 'text' ) ); ?></p>
+				</div>
+			</div>
+			<?php
+					$osof_i++;
+				endwhile;
+			else :
+				$osof_defaults = array(
+					array( 'Search Engine Optimisation', 'Traditional rankings on Google and Bing. Technical foundations, content strategy, and authority building that compound over time.' ),
+					array( 'AI Overview Optimisation', 'Get featured in Google&rsquo;s AI-generated summaries. We structure your content so AI understands and recommends your business.' ),
+					array( 'Answer Engine Optimisation', 'ChatGPT, Perplexity, Gemini: billions of searches now happen through AI assistants. We make sure they cite you.' ),
+					array( 'Generative Engine Optimisation', 'The next frontier. We optimise for generative search engines that don&rsquo;t just link to you but build answers from your content.' ),
+				);
+				foreach ( $osof_defaults as $idx => $step ) :
+			?>
+			<div class="hp-osof-v2__step">
+				<div class="hp-osof-v2__node">
+					<div class="hp-osof-v2__dot">
+						<div class="hp-osof-v2__pulse"></div>
+					</div>
+				</div>
+				<div class="hp-osof-v2__card">
+					<div class="hp-osof-v2__number">
+						<span class="hp-osof-v2__digit"><span class="hp-osof-v2__digit-inner">0</span></span><span class="hp-osof-v2__digit"><span class="hp-osof-v2__digit-inner"><?php echo esc_html( $idx + 1 ); ?></span></span>
+					</div>
+					<h3 class="hp-osof-v2__step-title"><?php echo esc_html( $step[0] ); ?></h3>
+					<p class="hp-osof-v2__step-text"><?php echo $step[1]; ?></p>
+				</div>
+			</div>
+			<?php endforeach; endif; ?>
+
+			<!-- Arrow at end of timeline -->
+			<div class="hp-osof-v2__arrow">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F06522" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M12 5v14"/>
+					<path d="M5 12l7 7 7-7"/>
+				</svg>
+			</div>
+		</div>
+
+		<div class="hp-osof-v2__cta text-center">
+			<a href="<?php echo esc_url( $osof_cta_url ); ?>" class="primary_btn"><?php echo esc_html( $osof_cta_text ); ?></a>
+		</div>
+	</div>
+</section>
+
+
+<?php /* ─── ORIGINAL SECTIONS (kept as backup, hidden) ─── */ ?>
+<div style="display:none!important" aria-hidden="true">
+
+<?php
+/* ===============================================================
+   SECTION 4 — SERVICE PILLARS (ORIGINAL — hidden backup)
+   =============================================================== */
 
 // Default SVG icons keyed by modifier
 $pillar_icons = array(
@@ -175,20 +356,6 @@ $pillar_icons = array(
 	</div>
 </section>
 
-
-<?php
-/* ===============================================================
-   SECTION 5 — OSOF METHODOLOGY
-   ACF fields: hp_osof_label, hp_osof_title, hp_osof_intro,
-   hp_osof_steps (repeater: title, text), hp_osof_cta_text, hp_osof_cta_url
-   =============================================================== */
-
-$osof_label    = get_field( 'hp_osof_label' ) ?: 'OUR METHODOLOGY';
-$osof_title    = get_field( 'hp_osof_title' ) ?: 'Found <strong>everywhere</strong> your customers look.';
-$osof_intro    = get_field( 'hp_osof_intro' ) ?: 'OSOF, our Organic Search Optimisation Framework, works across four pillars to make sure you don&rsquo;t just rank on Google. You appear wherever your ideal customer is searching.';
-$osof_cta_text = get_field( 'hp_osof_cta_text' ) ?: 'Learn More About OSOF';
-$osof_cta_url  = get_field( 'hp_osof_cta_url' ) ?: home_url( '/osof/' );
-?>
 <section class="hp-osof">
 	<div class="container">
 		<div class="hp-osof__header" data-aos="fade-up">
@@ -213,14 +380,13 @@ $osof_cta_url  = get_field( 'hp_osof_cta_url' ) ?: home_url( '/osof/' );
 					$osof_i++;
 				endwhile;
 			else :
-				// Fallback
-				$osof_defaults = array(
+				$osof_defaults_bak = array(
 					array( 'Search Engine Optimisation', 'Traditional rankings on Google and Bing. Technical foundations, content strategy, and authority building that compound over time.' ),
 					array( 'AI Overview Optimisation', 'Get featured in Google&rsquo;s AI-generated summaries. We structure your content so AI understands and recommends your business.' ),
 					array( 'Answer Engine Optimisation', 'ChatGPT, Perplexity, Gemini: billions of searches now happen through AI assistants. We make sure they cite you.' ),
 					array( 'Generative Engine Optimisation', 'The next frontier. We optimise for generative search engines that don&rsquo;t just link to you but build answers from your content.' ),
 				);
-				foreach ( $osof_defaults as $idx => $step ) :
+				foreach ( $osof_defaults_bak as $idx => $step ) :
 					$delay = $idx * 150;
 			?>
 			<div class="hp-osof__step" data-aos="fade-up"<?php if ( $delay ) echo ' data-aos-delay="' . esc_attr( $delay ) . '"'; ?>>
@@ -236,6 +402,9 @@ $osof_cta_url  = get_field( 'hp_osof_cta_url' ) ?: home_url( '/osof/' );
 		</div>
 	</div>
 </section>
+
+</div>
+<?php /* ─── END ORIGINAL BACKUP ─── */ ?>
 
 
 <?php
@@ -339,9 +508,9 @@ $quiz_btn_url   = get_field( 'hp_quiz_primary_url' ) ?: home_url( '/branding-qui
 $quiz_sec_text  = get_field( 'hp_quiz_secondary_text' ) ?: 'Book a Free Strategy Call';
 $quiz_sec_url   = get_field( 'hp_quiz_secondary_url' ) ?: home_url( '/contact/' );
 
-$tq    = get_field( 'hp_testimonial_quote' );
-$tname = get_field( 'hp_testimonial_name' );
-$trole = get_field( 'hp_testimonial_role' );
+$tq    = get_field( 'hp_testimonial_quote' ) ?: 'This project fundamentally changed how our business operates. What started as a website quickly became a complete rethink of our sales, inventory, and customer processes. Proud Brands challenged us, guided us, and built a system that actually fits how we work.';
+$tname = get_field( 'hp_testimonial_name' ) ?: 'Bill Falconer';
+$trole = get_field( 'hp_testimonial_role' ) ?: 'Owner, Anglers Resource LLC';
 $timg  = get_field( 'hp_testimonial_photo' );
 ?>
 <section class="hp-quiz-testi">

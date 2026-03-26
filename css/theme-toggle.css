@@ -5,6 +5,16 @@
    [data-theme="light"] on <html> activates light mode.
    ═══════════════════════════════════════════════════════════ */
 
+/* ── Locked pages: hide toggle ── */
+/* Dark-only: services, contact, blog, about */
+.page-template-template-services .pb-theme-toggle,
+.page-template-template-contact .pb-theme-toggle,
+.page-template-template-blog .pb-theme-toggle,
+.page-template-template-about .pb-theme-toggle,
+/* Light-default: case studies */
+.post-type-archive-case_study .pb-theme-toggle,
+.single-case_study .pb-theme-toggle { display: none !important; }
+
 /* ── Dark defaults (match existing hard-coded values) ── */
 :root {
   --pb-bg-primary:   #000000;
@@ -671,6 +681,44 @@
     linear-gradient(92.7deg, #2AB473 0%, #8BC53F 9%, #F8B042 33%, #FDF202 52%, #F06522 71%, #44C6EF 93%) border-box;
 }
 
+/* ── "How we build" (white variant) — ALWAYS DARK in light mode ── */
+[data-theme="light"] .how_build_sec {
+  background: #151515;
+}
+[data-theme="light"] .how_build_sec .build_div h2,
+[data-theme="light"] .how_build_sec .build_div ul li h3 {
+  color: #fff;
+}
+[data-theme="light"] .how_build_sec .build_div ul li p {
+  color: rgba(255,255,255,0.65);
+}
+[data-theme="light"] .how_build_sec .build_div span {
+  color: #767676;
+}
+[data-theme="light"] .how_build_sec .build_div h2 strong {
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .how_build_sec .build_div ul li small:before {
+  background:
+    linear-gradient(#151515, #151515) padding-box,
+    linear-gradient(92.7deg, #2AB473 0%, #8BC53F 9%, #F8B042 33%, #FDF202 52%, #F06522 71%, #44C6EF 93%) border-box;
+}
+[data-theme="light"] .how_build_sec .build_div ul::before {
+  background:
+    linear-gradient(#151515, #151515) padding-box,
+    linear-gradient(90deg, #2AB473 0%, #FBAF42 50%, #44C6EF 100%) border-box;
+}
+[data-theme="light"] .how_build_sec .build_div a.secondary_btn {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+[data-theme="light"] .how_build_sec .build_div a.secondary_btn:hover {
+  background: #2AB473;
+  color: #fff;
+  border-color: #2AB473;
+}
+
 
 /* ═══════════════════════════════════════════════════════════
    FOOTER CTA — Swaps with theme toggle
@@ -1211,22 +1259,51 @@ body,
    HOMEPAGE — Light mode overrides for all 13 sections
    ═══════════════════════════════════════════════════════════ */
 
-/* ── S1: Hero — now swaps with theme toggle ── */
-[data-theme="light"] .page-template-template-home .sv-hero--home .pb-quiz__trigger--default {
-  background: #1a1a1a;
+/* ── S1: Hero — ALWAYS DARK (both modes) ── */
+[data-theme="light"] .page-template-template-home .sv-hero--home {
+  background: #000;
+}
+[data-theme="light"] .page-template-template-home .sv-hero--home .sv-hero__overlay {
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 70%);
+}
+[data-theme="light"] .page-template-template-home .sv-hero--home .sv-hero__label {
+  color: rgba(255,255,255,0.4);
+}
+[data-theme="light"] .page-template-template-home .sv-hero--home .sv-hero__title {
   color: #fff;
-  border-color: #1a1a1a;
+}
+[data-theme="light"] .page-template-template-home .sv-hero--home .sv-hero__title strong {
+  background: linear-gradient(to right, #2AB473 0%, #8BC53F 48%, #FEF100 83%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+[data-theme="light"] .page-template-template-home .sv-hero--home .sv-hero__descriptor {
+  color: rgba(255,255,255,0.78);
+}
+[data-theme="light"] .page-template-template-home .sv-hero--home .pb-quiz__trigger--default {
+  background: #fff;
+  color: #0A0A0A;
+  border-color: #fff;
 }
 [data-theme="light"] .page-template-template-home .sv-hero--home .pb-quiz__trigger--default:hover {
   background: #2AB473;
   color: #fff;
   border-color: #2AB473;
 }
+[data-theme="light"] .page-template-template-home .sv-hero--home .sv-hero__btn--secondary {
+  color: #fff;
+  border-color: rgba(255,255,255,0.25);
+}
+[data-theme="light"] .page-template-template-home .sv-hero--home .sv-hero__btn--secondary:hover {
+  border-color: #fff;
+  color: #fff;
+}
 [data-theme="light"] .hp-hero__scroll-link {
-  color: rgba(0,0,0,0.35);
+  color: rgba(255,255,255,0.4);
 }
 [data-theme="light"] .hp-hero__scroll-link:hover {
-  color: rgba(0,0,0,0.7);
+  color: rgba(255,255,255,0.8);
 }
 
 /* ── S3: Stats bar — swaps with theme toggle ── */
@@ -1252,7 +1329,72 @@ body,
   color: var(--pb-text-secondary);
 }
 
-/* ── S5: OSOF methodology (goes light) ── */
+/* ── S4: What We Do v2 — ALWAYS DARK ── */
+[data-theme="light"] .hp-wwd {
+  background: #0A0A0A;
+}
+[data-theme="light"] .hp-wwd__label {
+  color: #2AB473;
+}
+[data-theme="light"] .hp-wwd :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
+}
+[data-theme="light"] .hp-wwd p {
+  color: rgba(255,255,255,0.55);
+}
+[data-theme="light"] .hp-wwd__title strong {
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .hp-wwd__card:hover .hp-wwd__name {
+  color: var(--card-accent, #2AB473);
+}
+[data-theme="light"] .hp-wwd__link {
+  color: var(--card-accent, #2AB473);
+}
+[data-theme="light"] .hp-wwd__card {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* ── S5: OSOF methodology v2 — ALWAYS DARK ── */
+[data-theme="light"] .hp-osof-v2 {
+  background: #151515;
+}
+[data-theme="light"] .hp-osof-v2__label {
+  color: #2AB473;
+}
+[data-theme="light"] .hp-osof-v2 :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
+}
+[data-theme="light"] .hp-osof-v2 p {
+  color: rgba(255,255,255,0.55);
+}
+[data-theme="light"] .hp-osof-v2__title strong {
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="light"] .hp-osof-v2__number {
+  color: var(--step-color, #2AB473);
+}
+[data-theme="light"] .hp-osof-v2__card {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.06);
+}
+[data-theme="light"] .hp-osof-v2__dot {
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.15);
+}
+[data-theme="light"] .hp-osof-v2__step.is-active .hp-osof-v2__step-title,
+[data-theme="light"] .hp-osof-v2__step:hover .hp-osof-v2__step-title {
+  color: var(--step-color, #2AB473);
+}
+[data-theme="light"] .hp-osof-v2__timeline::before {
+  background: rgba(255,255,255,0.06);
+}
+[data-theme="light"] .hp-osof-v2__arrow {
+  color: #F06522;
+}
+
+/* ── S5 old: OSOF methodology (hidden backup, goes light) ── */
 [data-theme="light"] .hp-osof {
   background: var(--pb-bg-primary);
 }
@@ -1290,17 +1432,22 @@ body,
   color: var(--pb-text-body);
 }
 
-/* ── S8: Quiz CTA + Testimonial (lime accent — swaps with toggle) ── */
-[data-theme="light"] .hp-quiz-testi {
-  background: rgba(68,198,239,0.06);
-  border-top-color: rgba(68,198,239,0.12);
-  border-bottom-color: rgba(68,198,239,0.12);
-}
-[data-theme="light"] .hp-quiz-testi__quote-card {
-  background: #ffffff;
-  border-color: #e0e0e0;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
+/* ── S8: Quiz CTA + Testimonial (solid cyan — stays cyan in both modes) ── */
+.hp-quiz-testi__heading { color: #ffffff; }
+.hp-quiz-testi__subtext { color: #000000; }
+.hp-quiz-testi__quote-card { background: rgba(0,0,0,0.15); border-color: rgba(255,255,255,0.15); }
+.hp-quiz-testi__quote p { color: rgba(255,255,255,0.9); }
+.hp-quiz-testi__name { color: #ffffff; }
+.hp-quiz-testi__role { color: rgba(255,255,255,0.7); }
+.hp-quiz-testi__marks { color: #ffffff; }
+
+[data-theme="light"] .hp-quiz-testi { background: #44C6EF; }
+[data-theme="light"] .hp-quiz-testi__heading { color: #ffffff; }
+[data-theme="light"] .hp-quiz-testi__subtext { color: rgba(255,255,255,0.85); }
+[data-theme="light"] .hp-quiz-testi__quote-card { background: rgba(0,0,0,0.15); border-color: rgba(255,255,255,0.15); box-shadow: none; }
+[data-theme="light"] .hp-quiz-testi__quote p { color: rgba(255,255,255,0.9); }
+[data-theme="light"] .hp-quiz-testi__name { color: #ffffff; }
+[data-theme="light"] .hp-quiz-testi__role { color: rgba(255,255,255,0.7); }
 
 /* ── S10: Process (goes light) ── */
 [data-theme="light"] .hp-process {
@@ -1365,6 +1512,12 @@ body,
 .hp-quiz-testi__quote-card,
 .hp-case-studies,
 .hp-articles,
+.hp-wwd,
+.hp-wwd__card,
+.hp-osof-v2,
+.hp-osof-v2__card,
+.hp-osof-v2__dot,
+.how_build_sec,
 .hp-osof,
 .hp-osof__step,
 .hp-process,

@@ -45,22 +45,66 @@
     localStorage.setItem(STORAGE_KEY, next);
   }
 
+  /**
+   * Check if the current page is a dark-only page (no toggle).
+   * These pages are always forced to dark mode.
+   */
+  // Dark-only pages: forced to dark, no toggle
+  var DARK_ONLY = [
+    'page-template-template-services',
+    'page-template-template-contact',
+    'page-template-template-blog',
+    'page-template-template-about'
+  ];
+
+  // Light-default pages: forced to light, no toggle
+  var LIGHT_DEFAULT = [
+    'post-type-archive-case_study',
+    'single-case_study'
+  ];
+
+  function hasBodyClass(classList) {
+    var body = document.body || document.querySelector('body');
+    if (!body) return false;
+    for (var i = 0; i < classList.length; i++) {
+      if (body.classList.contains(classList[i])) return true;
+    }
+    return false;
+  }
+
   // ── Apply immediately (runs in <head> or early body) ──
-  applyTheme(getPreferredTheme());
+  // If PHP already set data-theme on <html>, respect it to avoid FOUC.
+  var phpTheme = document.documentElement.getAttribute('data-theme');
+  if (!phpTheme) {
+    applyTheme(getPreferredTheme());
+  }
 
   // ── Bind toggle buttons once DOM is ready ──
   document.addEventListener('DOMContentLoaded', function () {
+    var isLocked = hasBodyClass(DARK_ONLY) || hasBodyClass(LIGHT_DEFAULT);
+
+    if (isLocked) {
+      // Force the correct theme and hide toggle
+      if (hasBodyClass(DARK_ONLY))    applyTheme('dark');
+      if (hasBodyClass(LIGHT_DEFAULT)) applyTheme('light');
+
+      var toggles = document.querySelectorAll('.pb-theme-toggle');
+      for (var i = 0; i < toggles.length; i++) {
+        toggles[i].style.display = 'none';
+      }
+      return;
+    }
+
     var toggles = document.querySelectorAll('.pb-theme-toggle');
     for (var i = 0; i < toggles.length; i++) {
       toggles[i].addEventListener('click', toggleTheme);
     }
   });
 
-  // ── Listen for OS preference changes ──
+  // ── Listen for OS preference changes (only on pages with toggle) ──
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
-      // Only auto-switch if user hasn't manually chosen.
-      if (!localStorage.getItem(STORAGE_KEY)) {
+      if (!localStorage.getItem(STORAGE_KEY) && !hasBodyClass(DARK_ONLY) && !hasBodyClass(LIGHT_DEFAULT)) {
         applyTheme(e.matches ? 'light' : 'dark');
       }
     });

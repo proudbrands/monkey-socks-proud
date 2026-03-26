@@ -11,7 +11,20 @@
 
 ?>
 <!doctype html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?><?php
+	// Dark-only pages: services, contact, blog, about
+	if (
+		is_page_template( 'template-services.php' ) ||
+		is_page_template( 'template-contact.php' ) ||
+		is_page_template( 'template-blog.php' ) ||
+		is_page_template( 'template-about.php' )
+	) {
+		echo ' data-theme="dark"';
+	// Light-default pages: case studies
+	} elseif ( is_post_type_archive( 'case_study' ) || is_singular( 'case_study' ) ) {
+		echo ' data-theme="light"';
+	}
+?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -1184,6 +1184,7 @@
 	position: relative;
 	overflow: hidden;
 	aspect-ratio: 3/2;
+	border-radius: var(--cs-radius-lg) var(--cs-radius-lg) 0 0;
 }
 .cs-card__image img {
 	width: 100%;
