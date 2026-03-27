@@ -253,7 +253,7 @@
     var steps = qsa('.hp-osof-v2__step', section);
     var progressBar = qs('.hp-osof-v2__progress', section);
     var timeline = qs('.hp-osof-v2__timeline', section);
-    var arrow = qs('.hp-osof-v2__arrow', section);
+    var endNode = qs('.hp-osof-v2__end-node', section);
 
     // Step entrance observer (low threshold so they appear easily)
     var stepObserver = new IntersectionObserver(function (entries) {
@@ -305,9 +305,9 @@
         closestStep.classList.add('is-active');
       }
 
-      // Show arrow once the last step is visible
-      if (arrow && scrollProgress > 0.85) {
-        arrow.classList.add('is-visible');
+      // Show end dot once the last step is visible
+      if (endNode && scrollProgress > 0.85) {
+        endNode.classList.add('is-visible');
       }
 
       ticking = false;
@@ -329,7 +329,7 @@
       var ctaObs = new IntersectionObserver(function (entries) {
         if (entries[0].isIntersecting) {
           cta.classList.add('is-visible');
-          if (arrow) arrow.classList.add('is-visible');
+          if (endNode) endNode.classList.add('is-visible');
           ctaObs.disconnect();
         }
       }, { threshold: 0.3 });

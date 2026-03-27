@@ -286,12 +286,11 @@ $osof_cta_url  = get_field( 'hp_osof_cta_url' ) ?: home_url( '/osof/' );
 			</div>
 			<?php endforeach; endif; ?>
 
-			<!-- Arrow at end of timeline -->
-			<div class="hp-osof-v2__arrow">
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F06522" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<path d="M12 5v14"/>
-					<path d="M5 12l7 7 7-7"/>
-				</svg>
+			<!-- End dot on timeline -->
+			<div class="hp-osof-v2__end-node">
+				<div class="hp-osof-v2__dot">
+					<div class="hp-osof-v2__pulse"></div>
+				</div>
 			</div>
 		</div>
 

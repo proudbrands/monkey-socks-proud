@@ -495,28 +495,38 @@
 .hp-osof-v2__step:nth-child(3) { --step-color: #F8B042; }
 .hp-osof-v2__step:nth-child(4) { --step-color: #F06522; }
 
-/* ── Arrow at end of timeline ── */
-.hp-osof-v2__arrow {
+/* ── End dot at bottom of timeline ── */
+.hp-osof-v2__end-node {
   position: relative;
   display: flex;
-  justify-content: flex-start;
-  padding-left: 20px; /* align with timeline centre (32px - half icon) */
-  padding-top: 8px;
+  justify-content: center;
+  width: 64px;
+  padding-top: 16px;
   z-index: 2;
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
 }
-.hp-osof-v2__arrow.is-visible {
+.hp-osof-v2__end-node.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-.hp-osof-v2__arrow svg {
-  animation: arrowBounce 2s ease-in-out infinite;
+/* Activate end dot when last step is active or hovered */
+.hp-osof-v2__step:last-of-type.is-active ~ .hp-osof-v2__end-node .hp-osof-v2__dot,
+.hp-osof-v2__step:last-of-type:hover ~ .hp-osof-v2__end-node .hp-osof-v2__dot {
+  border-color: #F06522;
+  box-shadow: 0 0 20px #F06522, 0 0 40px rgba(240,101,34,0.2);
 }
-@keyframes arrowBounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(8px); }
+.hp-osof-v2__step:last-of-type.is-active ~ .hp-osof-v2__end-node .hp-osof-v2__dot::after,
+.hp-osof-v2__step:last-of-type:hover ~ .hp-osof-v2__end-node .hp-osof-v2__dot::after {
+  opacity: 1;
+  transform: scale(1);
+  background: #F06522;
+}
+.hp-osof-v2__step:last-of-type.is-active ~ .hp-osof-v2__end-node .hp-osof-v2__pulse,
+.hp-osof-v2__step:last-of-type:hover ~ .hp-osof-v2__end-node .hp-osof-v2__pulse {
+  border-color: #F06522;
+  animation: pulseRing 2s ease-out infinite;
 }
 
 /* ── CTA ── */
@@ -551,6 +561,7 @@
   .hp-osof-v2__timeline::before { left: 24px; }
   .hp-osof-v2__progress { left: 24px; }
   .hp-osof-v2__node { width: 48px; }
+  .hp-osof-v2__end-node { width: 48px; }
 }
 
 @media (max-width: 767px) {
