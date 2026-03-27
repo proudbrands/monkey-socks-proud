@@ -1434,7 +1434,7 @@ body,
 
 /* ── S8: Quiz CTA + Testimonial (solid cyan — stays cyan in both modes) ── */
 .hp-quiz-testi__heading { color: #ffffff; }
-.hp-quiz-testi__subtext { color: #000000; }
+.hp-quiz-testi__subtext { color: rgba(255,255,255,0.85); }
 .hp-quiz-testi__quote-card { background: rgba(0,0,0,0.15); border-color: rgba(255,255,255,0.15); }
 .hp-quiz-testi__quote p { color: rgba(255,255,255,0.9); }
 .hp-quiz-testi__name { color: #ffffff; }
