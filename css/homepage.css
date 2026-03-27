@@ -164,10 +164,10 @@
 /* ─── Mid-Page Quiz CTA ─── */
 /* ─── Quiz CTA + Testimonial (Lime Accent, 2-col) ─── */
 .hp-quiz-testi {
-  background: #44C6EF;
+  background: #0a2a33;
   padding: 100px 0;
-  border-top: 1px solid rgba(68,198,239,0.3);
-  border-bottom: 1px solid rgba(68,198,239,0.3);
+  border-top: 1px solid rgba(68,198,239,0.15);
+  border-bottom: 1px solid rgba(68,198,239,0.15);
 }
 .hp-quiz-testi__grid {
   display: grid;
@@ -190,7 +190,7 @@
 .hp-quiz-testi__subtext {
   font-size: 17px;
   font-weight: 300;
-  color: var(--pb-text-secondary);
+  color: rgba(255,255,255,0.75);
   line-height: 1.6;
   margin-bottom: 36px;
 }
@@ -202,8 +202,8 @@
 
 /* Right: Testimonial card */
 .hp-quiz-testi__quote-card {
-  background: var(--pb-bg-elevated);
-  border: 1px solid var(--pb-border);
+  background: rgba(68,198,239,0.08);
+  border: 1px solid rgba(68,198,239,0.15);
   border-radius: 16px;
   padding: 40px;
   position: relative;
@@ -235,7 +235,7 @@
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(68,198,239,0.3);
+  border: 2px solid rgba(68,198,239,0.25);
 }
 .hp-quiz-testi__name {
   display: block;
